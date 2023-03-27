@@ -1,9 +1,10 @@
-f=open("graf.txt")
+f=open("exemplu5")
 stare_initiala=f.readline()
 stare_initiala=stare_initiala[0:len(stare_initiala)-1]
 L=f.readlines()
 sf=L[len(L)-1]
 sf=sf.split()
+
 tabela={}
 cuvant=input("Cuvantul este:")
 
@@ -22,11 +23,18 @@ for i in range(0,len(L)-1):
 
 
 def accept(G,sf,initiala,cuv):
+    if cuvant == "" and stare_initiala in sf:
+        return("Cuvantul vid este acceptat")
+    elif cuvant == "" and stare_initiala not in sf:
+        return("Cuvantul vid nu este Acceptat")
+
+
     stare=initiala
     drum=[stare]
     for c in cuv:
         try:
             stare=G[stare][c]
+            print(stare)
             drum.append(stare)
         except:
             return("Neacceptat")
